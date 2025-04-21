@@ -1,0 +1,19 @@
+{% extends "encyclopedia/layout.html" %}
+{% load static %}
+{% block title %}
+    Encyclopedia
+    <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <h1>Edit page</h1>
+    
+    <form action="{% url 'save_edit' %}" method="POST">
+        {%csrf_token%}
+        <label for="name">Title : </label>
+        <input type="text" name="title" placeholder="Type a title" value="{{title}}"><br>
+        <label for="area">Information in markdown : </label><br>
+        <textarea name="info">{{ info}}</textarea><br>
+        <input type="submit" name="t" value="save" class="button">
+    </form>
+{% endblock %}
